@@ -1,64 +1,60 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ka">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Zukito</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <style>
     body {
       margin: 0;
       font-family: Arial, sans-serif;
       background: #0f0f0f;
-      color: #fff;
+      color: white;
     }
 
     header {
       padding: 16px;
-      font-size: 22px;
+      font-size: 24px;
       font-weight: bold;
     }
 
     .filters {
       display: flex;
       gap: 10px;
-      padding: 0 16px 16px;
+      padding: 0 16px;
     }
 
     .filter {
-      background: #272727;
       padding: 8px 14px;
+      background: #272727;
       border-radius: 20px;
       cursor: pointer;
+      user-select: none;
     }
 
     .filter.active {
-      background: #fff;
-      color: #000;
-    }
-
-    .videos {
-      padding: 16px;
+      background: white;
+      color: black;
     }
 
     .card {
-      cursor: pointer;
+      padding: 16px;
     }
 
-    .thumb {
+    .card img {
       width: 100%;
-      border-radius: 12px;
+      border-radius: 14px;
     }
 
     .title {
+      font-size: 20px;
       margin-top: 10px;
-      font-size: 18px;
       font-weight: bold;
     }
 
     .meta {
       color: #aaa;
-      font-size: 14px;
       margin-top: 4px;
     }
 
@@ -66,11 +62,11 @@
     .modal {
       position: fixed;
       inset: 0;
-      background: rgba(0,0,0,0.7);
+      background: rgba(0,0,0,0.8);
       display: none;
-      justify-content: center;
       align-items: center;
-      z-index: 999;
+      justify-content: center;
+      z-index: 10;
     }
 
     .modal.active {
@@ -78,24 +74,31 @@
     }
 
     .modal-content {
-      background: #000;
+      background: black;
       padding: 10px;
       border-radius: 12px;
-      width: 90%;
-      max-width: 600px;
+      max-width: 90%;
+    }
+
+    video {
+      width: 100%;
+      border-radius: 10px;
     }
 
     .close {
-      background: red;
-      color: white;
-      border: none;
-      padding: 6px 12px;
       margin-top: 10px;
+      width: 100%;
+      padding: 10px;
+      background: #ff4444;
+      border: none;
+      color: white;
+      border-radius: 8px;
+      font-size: 16px;
       cursor: pointer;
-      border-radius: 6px;
     }
   </style>
 </head>
+
 <body>
 
   <header>Zukito</header>
@@ -108,21 +111,19 @@
     <div class="filter">Music</div>
   </div>
 
-  <div class="videos">
-    <div class="card" onclick="openModal()">
-      <img class="thumb" src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e" />
-      <div class="title">TOP 10 შოკისმომგვრელი ფაქტი 😱</div>
-      <div class="meta">1.2M views · 2 days ago</div>
-    </div>
+  <div class="card" onclick="openModal()">
+    <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e" />
+    <div class="title">TOP 10 შოკისმომგვრელი ფაქტი 😱</div>
+    <div class="meta">1.2M views · 2 days ago</div>
   </div>
 
   <!-- MODAL -->
   <div class="modal" id="modal" onclick="closeOnBackdrop(event)">
     <div class="modal-content">
-      <video controls width="100%">
+      <video controls>
         <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
       </video>
-      <button class="close" onclick="closeModal()">Close</button>
+      <button class="close" onclick="closeModal()">დახურვა</button>
     </div>
   </div>
 
