@@ -1,56 +1,139 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Zukito</title>
-  <link rel="stylesheet" href="style.css" />
-</head>
-<body>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+}
 
-<header class="top-bar">
-  <div class="logo">
-    <span class="logo-box">9</span>
-    <span class="logo-text">Zukito</span>
-  </div>
+body {
+  background: #0f0f0f;
+  color: #fff;
+}
 
-  <div class="topbar">
-  <div class="logo">
-    <span class="badge">9</span>
-    <span class="name">Zukito</span>
-  </div>
+/* APP CONTAINER (mobile width) */
+.app {
+  max-width: 430px;
+  margin: 0 auto;
+}
 
-  <div class="search-box">
-    <input type="text" placeholder="Search" />
-    <span class="search-icon">🔍</span>
-  </div>
-</div>
+/* TOP BAR */
+.topbar {
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 430px;
+  z-index: 1000;
+  background: #0f0f0f;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+}
 
-<nav class="categories">
-  <div class="cat active">All</div>
-  <div class="cat">Shorts</div>
-  <div class="cat">Live</div>
-  <div class="cat">Gaming</div>
-  <div class="cat">Music</div>
-  <div class="cat">News</div>
-</nav>
-<main class="feed">
-  <div class="video-card">
-    <img src="https://picsum.photos/800/450?1" />
-    <div class="video-info">
-      <h3>TOP 10 საოცარი ფაქტი 😱</h3>
-      <p>1.2M views • 2 days ago</p>
-    </div>
-  </div>
+/* LOGO */
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 600;
+}
 
-  <div class="video-card">
-    <img src="https://picsum.photos/800/450?2" />
-    <div class="video-info">
-      <h3>Gaming Highlights 🎮</h3>
-      <p>540K views • 1 day ago</p>
-    </div>
-  </div>
-</main>
+.badge {
+  background: red;
+  color: #fff;
+  border-radius: 6px;
+  padding: 2px 6px;
+  font-size: 13px;
+}
 
-</body>
-</html>
+/* SEARCH */
+.search-box {
+  flex: 1;
+  position: relative;
+}
+
+.search-box input {
+  width: 100%;
+  height: 36px;
+  border-radius: 20px;
+  border: none;
+  background: #1f1f1f;
+  padding: 0 40px 0 14px;
+  color: #fff;
+  font-size: 14px;
+  outline: none;
+}
+
+.search-box input::placeholder {
+  color: #aaa;
+}
+
+.search-icon {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 16px;
+  color: #aaa;
+  pointer-events: none;
+}
+
+/* CATEGORIES */
+.categories {
+  margin-top: 56px; /* topbar height */
+  display: flex;
+  gap: 8px;
+  padding: 10px 12px;
+  overflow-x: auto;
+  white-space: nowrap;
+}
+
+.categories::-webkit-scrollbar {
+  display: none;
+}
+
+.cat {
+  padding: 6px 14px;
+  background: #272727;
+  border-radius: 16px;
+  font-size: 14px;
+  color: #fff;
+  flex-shrink: 0;
+}
+
+.cat.active {
+  background: #fff;
+  color: #000;
+}
+
+/* FEED */
+.feed {
+  padding-bottom: 40px;
+}
+
+.video-card {
+  margin-bottom: 16px;
+}
+
+.video-card img {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}
+
+.video-info {
+  padding: 8px 12px;
+}
+
+.video-info h3 {
+  font-size: 15px;
+  font-weight: 500;
+  margin-bottom: 4px;
+}
+
+.video-info p {
+  font-size: 13px;
+  color: #aaa;
+}
