@@ -100,4 +100,28 @@ body {
 .video-info p {
   font-size: 13px;
   color: #aaa;
+}.categories {
+  display: flex;
+  gap: 10px;
+  padding: 8px 12px;
+  overflow-x: auto;
+  white-space: nowrap;
+}
+
+.categories::-webkit-scrollbar {
+  display: none;
+}
+
+.cat {
+  padding: 6px 14px;
+  background: #272727;
+  border-radius: 16px;
+  font-size: 14px;
+  color: #fff;
+  flex-shrink: 0;
+}
+
+.cat.active {
+  background: #fff;
+  color: #000;
 }
