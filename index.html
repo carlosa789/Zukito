@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Zukito</title>
+
+<style>
+body {
+  margin: 0;
+  background: #0f0f0f;
+  color: #fff;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+/* Header */
+header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px;
+}
+
+.logo {
+  width: 36px;
+  height: 36px;
+  background: red;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+}
+
+.search {
+  flex: 1;
+  background: #222;
+  border-radius: 20px;
+  padding: 10px 14px;
+  color: #aaa;
+}
+
+/* Categories */
+.categories {
+  display: flex;
+  gap: 10px;
+  padding: 10px 14px;
+  overflow-x: auto;
+}
+
+.cat {
+  padding: 8px 14px;
+  background: #222;
+  border-radius: 20px;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.cat.active {
+  background: #fff;
+  color: #000;
+}
+
+/* Video card */
+.video {
+  padding: 14px;
+}
+
+.thumb {
+  width: 100%;
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.thumb img {
+  width: 100%;
+  display: block;
+}
+
+.title {
+  font-size: 20px;
+  font-weight: bold;
+  margin-top: 12px;
+}
+
+.meta {
+  color: #aaa;
+  margin-top: 4px;
+}
+
+/* Modal player */
+.modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.9);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+}
+
+.modal iframe {
+  width: 90%;
+  height: 50%;
+  border-radius: 12px;
+  border: none;
+}
+
+.modal.close {
+  display: none;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo">9</div>
+  <div style="font-size:20px;font-weight:600;">Zukito</div>
+  <div class="search">Search</div>
+</header>
+
+<div class="categories">
+  <div class="cat active">All</div>
+  <div class="cat">Shorts</div>
+  <div class="cat">Live</div>
+  <div class="cat">Gaming</div>
+  <div class="cat">Music</div>
+  <div class="cat">News</div>
+</div>
+
+<div class="video" onclick="openVideo('https://www.youtube.com/embed/dQw4w9WgXcQ')">
+  <div class="thumb">
+    <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e" />
+  </div>
+  <div class="title">TOP 10 შოკისმომგვრელი ფაქტი 😱</div>
+  <div class="meta">1.2M views • 2 days ago</div>
+</div>
+
+<!-- Modal -->
+<div class="modal" id="player" onclick="closeVideo()">
+  <iframe id="frame" allowfullscreen></iframe>
+</div>
+
+<script>
+function openVideo(url) {
+  document.getElementById("player").style.display = "flex";
+  document.getElementById("frame").src = url;
+}
+
+function closeVideo() {
+  document.getElementById("player").style.display = "none";
+  document.getElementById("frame").src = "";
+}
+</script>
+
+</body>
+</html>
