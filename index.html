@@ -1,132 +1,64 @@
 <!DOCTYPE html>
-<html lang="ka">
+<html lang="en">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8">
   <title>Zukito</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #0f0f0f;
-      color: white;
-    }
-
-    header {
-      padding: 16px;
-      font-size: 24px;
-      font-weight: bold;
-    }
-
-    .filters {
-      display: flex;
-      gap: 10px;
-      padding: 0 16px;
-    }
-
-    .filter {
-      padding: 8px 14px;
-      background: #272727;
-      border-radius: 20px;
-      cursor: pointer;
-      user-select: none;
-    }
-
-    .filter.active {
-      background: white;
-      color: black;
-    }
-
-    .card {
-      padding: 16px;
-    }
-
-    .card img {
-      width: 100%;
-      border-radius: 14px;
-    }
-
-    .title {
-      font-size: 20px;
-      margin-top: 10px;
-      font-weight: bold;
-    }
-
-    .meta {
-      color: #aaa;
-      margin-top: 4px;
-    }
-
-    /* MODAL */
-    .modal {
-      position: fixed;
-      inset: 0;
-      background: rgba(0,0,0,0.8);
-      display: none;
-      align-items: center;
-      justify-content: center;
-      z-index: 10;
-    }
-
-    .modal.active {
-      display: flex;
-    }
-
-    .modal-content {
-      background: black;
-      padding: 10px;
-      border-radius: 12px;
-      max-width: 90%;
-    }
-
-    video {
-      width: 100%;
-      border-radius: 10px;
-    }
-
-    .close {
-      margin-top: 10px;
-      width: 100%;
-      padding: 10px;
-      background: #ff4444;
-      border: none;
-      color: white;
-      border-radius: 8px;
-      font-size: 16px;
-      cursor: pointer;
-    }
-  </style>
+  <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
-  <header>Zukito</header>
-
-  <div class="filters">
-    <div class="filter active">All</div>
-    <div class="filter">Shorts</div>
-    <div class="filter">Live</div>
-    <div class="filter">Gaming</div>
-    <div class="filter">Music</div>
+<header class="top-bar">
+  <div class="logo">
+    <div class="badge">9</div>
+    <span>Zukito</span>
   </div>
 
-  <div class="card" onclick="openModal()">
-    <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e" />
-    <div class="title">TOP 10 შოკისმომგვრელი ფაქტი 😱</div>
-    <div class="meta">1.2M views · 2 days ago</div>
+  <input type="text" id="searchInput" placeholder="Search">
+</header>
+
+<div class="filters">
+  <button class="filter active" data-filter="all">All</button>
+  <button class="filter" data-filter="shorts">Shorts</button>
+  <button class="filter" data-filter="live">Live</button>
+  <button class="filter" data-filter="gaming">Gaming</button>
+  <button class="filter" data-filter="music">Music</button>
+  <button class="filter" data-filter="news">News</button>
+</div>
+
+<div class="videos">
+
+  <div class="video" data-category="news" data-title="top 10 შოკანტური ფაქტი">
+    <img src="https://picsum.photos/800/450?1">
+    <h3>TOP 10 შოკანტური ფაქტი 😱</h3>
+    <p>1.2M views • 2 days ago</p>
   </div>
 
-  <!-- MODAL -->
-  <div class="modal" id="modal" onclick="closeOnBackdrop(event)">
-    <div class="modal-content">
-      <video controls>
-        <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
-      </video>
-      <button class="close" onclick="closeModal()">დახურვა</button>
-    </div>
+  <div class="video" data-category="gaming" data-title="gaming highlights">
+    <img src="https://picsum.photos/800/450?2">
+    <h3>Gaming Highlights 🎮</h3>
+    <p>540K views • 1 day ago</p>
   </div>
 
-  <script src="script.js"></script>
+  <div class="video" data-category="music" data-title="new music mix">
+    <img src="https://picsum.photos/800/450?3">
+    <h3>New Music Mix 🎵</h3>
+    <p>890K views • 3 days ago</p>
+  </div>
+
+  <div class="video" data-category="live" data-title="live stream event">
+    <img src="https://picsum.photos/800/450?4">
+    <h3>Live Stream Event 🔴</h3>
+    <p>120K watching now</p>
+  </div>
+
+  <div class="video" data-category="shorts" data-title="funny short clip">
+    <img src="https://picsum.photos/800/450?5">
+    <h3>Funny Short Clip 😂</h3>
+    <p>2M views • 5 hours ago</p>
+  </div>
+
+</div>
+
+<script src="script.js"></script>
 </body>
 </html>
