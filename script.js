@@ -1,35 +1,45 @@
-const filters = document.querySelectorAll(".filter");
-const videos = document.querySelectorAll(".video");
-const searchInput = document.getElementById("searchInput");
+const API_KEY = "AIzaSyD-2GVQuFWte6JvxqMZGARJ7ENVoSC0VS0";
+const FEED = document.querySelector(".feed");
 
-function filterVideos() {
-  const activeFilter = document.querySelector(".filter.active").dataset.filter;
-  const searchText = searchInput.value.toLowerCase();
+// Trending videos
+fetch(
+  `https://www.googleapis.com/youtube/v3/videos?part=snippet,statistics&chart=mostPopular&regionCode=US&maxResults=10&key=${API_KEY}`
+)
+  .then(res => res.json())
+  .then(data => {
+    FEED.innerHTML = "";
+    data.items.forEach(video => {
+      const card = document.createElement("div");
+      card.className = "video-card";
 
-  videos.forEach(video => {
-    const category = video.dataset.category;
-    const title = video.dataset.title.toLowerCase();
+      card.innerHTML = `
+        <img src="${video.snippet.thumbnails.high.url}">
+        <div class="video-info">
+          <h3>${video.snippet.title}</h3>
+          <p>${Number(video.statistics.viewCount).toLocaleString()} views</p>
+        </div>
+      `;
 
-    const matchesFilter =
-      activeFilter === "all" || category === activeFilter;
-
-    const matchesSearch =
-      title.includes(searchText);
-
-    if (matchesFilter && matchesSearch) {
-      video.style.display = "block";
-    } else {
-      video.style.display = "none";
-    }
+      card.onclick = () => openVideo(video.id);
+      FEED.appendChild(card);
+    });
   });
+
+function openVideo(id) {
+  document.body.innerHTML = `
+    <div style="padding:12px">
+      <iframe 
+        width="100%" 
+        height="220"
+        src="https://www.youtube.com/embed/${id}?autoplay=1"
+        frameborder="0"
+        allowfullscreen>
+      </iframe>
+
+      <button onclick="location.reload()" 
+        style="margin-top:12px;background:#272727;color:#fff;border:none;padding:10px 14px;border-radius:8px">
+        ← Back
+      </button>
+    </div>
+  `;
 }
-
-filters.forEach(button => {
-  button.addEventListener("click", () => {
-    filters.forEach(btn => btn.classList.remove("active"));
-    button.classList.add("active");
-    filterVideos();
-  });
-});
-
-searchInput.addEventListener("input", filterVideos);
