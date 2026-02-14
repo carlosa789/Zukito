@@ -10,7 +10,7 @@ body {
   color: #fff;
 }
 
-/* APP CONTAINER (mobile width) */
+/* APP */
 .app {
   max-width: 430px;
   margin: 0 auto;
@@ -20,12 +20,11 @@ body {
 .topbar {
   position: fixed;
   top: 0;
-  left: 50%;
-  transform: translateX(-50%);
   width: 100%;
   max-width: 430px;
-  z-index: 1000;
   background: #0f0f0f;
+  z-index: 1000;
+
   display: flex;
   align-items: center;
   gap: 10px;
@@ -82,12 +81,11 @@ body {
 
 /* CATEGORIES */
 .categories {
-  margin-top: 56px; /* topbar height */
+  margin-top: 56px;
   display: flex;
   gap: 8px;
   padding: 10px 12px;
   overflow-x: auto;
-  white-space: nowrap;
 }
 
 .categories::-webkit-scrollbar {
@@ -99,8 +97,7 @@ body {
   background: #272727;
   border-radius: 16px;
   font-size: 14px;
-  color: #fff;
-  flex-shrink: 0;
+  white-space: nowrap;
 }
 
 .cat.active {
