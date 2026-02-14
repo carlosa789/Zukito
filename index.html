@@ -8,56 +8,28 @@
   <style>
     body {
       margin: 0;
+      font-family: Arial, sans-serif;
       background: #0f0f0f;
       color: #fff;
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
     }
 
-    /* Header */
     header {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      padding: 14px;
-      position: sticky;
-      top: 0;
-      background: #0f0f0f;
-      z-index: 10;
-    }
-
-    .logo {
-      width: 36px;
-      height: 36px;
-      border-radius: 8px;
-      background: #ff0033;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      padding: 16px;
+      font-size: 22px;
       font-weight: bold;
     }
 
-    .search {
-      flex: 1;
-      background: #222;
-      border-radius: 20px;
-      padding: 10px 14px;
-      color: #aaa;
-    }
-
-    /* Filters */
     .filters {
       display: flex;
       gap: 10px;
-      padding: 10px 14px;
-      overflow-x: auto;
+      padding: 0 16px 16px;
     }
 
     .filter {
-      background: #222;
+      background: #272727;
       padding: 8px 14px;
-      border-radius: 16px;
-      white-space: nowrap;
-      font-size: 14px;
+      border-radius: 20px;
+      cursor: pointer;
     }
 
     .filter.active {
@@ -65,12 +37,8 @@
       color: #000;
     }
 
-    /* Cards */
-    .container {
-      padding: 14px;
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 20px;
+    .videos {
+      padding: 16px;
     }
 
     .card {
@@ -79,36 +47,30 @@
 
     .thumb {
       width: 100%;
-      border-radius: 14px;
-      aspect-ratio: 16 / 9;
-      background-size: cover;
-      background-position: center;
-    }
-
-    .info {
-      margin-top: 10px;
+      border-radius: 12px;
     }
 
     .title {
-      font-size: 16px;
-      font-weight: 600;
+      margin-top: 10px;
+      font-size: 18px;
+      font-weight: bold;
     }
 
     .meta {
-      font-size: 13px;
       color: #aaa;
+      font-size: 14px;
       margin-top: 4px;
     }
 
-    /* Modal */
+    /* MODAL */
     .modal {
       position: fixed;
       inset: 0;
       background: rgba(0,0,0,0.7);
       display: none;
-      align-items: center;
       justify-content: center;
-      z-index: 100;
+      align-items: center;
+      z-index: 999;
     }
 
     .modal.active {
@@ -116,87 +78,54 @@
     }
 
     .modal-content {
-      background: #111;
+      background: #000;
+      padding: 10px;
+      border-radius: 12px;
       width: 90%;
       max-width: 600px;
-      border-radius: 16px;
-      padding: 16px;
-      animation: pop 0.25s ease;
-    }
-
-    @keyframes pop {
-      from { transform: scale(0.9); opacity: 0; }
-      to { transform: scale(1); opacity: 1; }
-    }
-
-    .modal video {
-      width: 100%;
-      border-radius: 12px;
     }
 
     .close {
-      margin-top: 12px;
-      background: #ff0033;
+      background: red;
+      color: white;
       border: none;
-      color: #fff;
-      width: 100%;
-      padding: 10px;
-      border-radius: 10px;
-      font-size: 16px;
+      padding: 6px 12px;
+      margin-top: 10px;
+      cursor: pointer;
+      border-radius: 6px;
     }
   </style>
 </head>
-
 <body>
 
-<header>
-  <div class="logo">Z</div>
-  <div class="search">Search</div>
-</header>
+  <header>Zukito</header>
 
-<div class="filters">
-  <div class="filter active">All</div>
-  <div class="filter">Shorts</div>
-  <div class="filter">Live</div>
-  <div class="filter">Gaming</div>
-  <div class="filter">Music</div>
-</div>
+  <div class="filters">
+    <div class="filter active">All</div>
+    <div class="filter">Shorts</div>
+    <div class="filter">Live</div>
+    <div class="filter">Gaming</div>
+    <div class="filter">Music</div>
+  </div>
 
-<div class="container">
-  <div class="card" onclick="openModal()">
-    <div class="thumb" style="background-image:url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e')"></div>
-    <div class="info">
+  <div class="videos">
+    <div class="card" onclick="openModal()">
+      <img class="thumb" src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e" />
       <div class="title">TOP 10 შოკისმომგვრელი ფაქტი 😱</div>
-      <div class="meta">1.2M views • 2 days ago</div>
+      <div class="meta">1.2M views · 2 days ago</div>
     </div>
   </div>
-</div>
 
-<!-- Modal -->
-<div class="modal" id="modal" onclick="closeOnBackdrop(event)">
-  <div class="modal-content">
-    <video controls>
-      <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
-    </video>
-    <button class="close" onclick="closeModal()">Close</button>
+  <!-- MODAL -->
+  <div class="modal" id="modal" onclick="closeOnBackdrop(event)">
+    <div class="modal-content">
+      <video controls width="100%">
+        <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+      </video>
+      <button class="close" onclick="closeModal()">Close</button>
+    </div>
   </div>
-</div>
 
-<script>
-  const modal = document.getElementById("modal");
-
-  function openModal() {
-    modal.classList.add("active");
-  }
-
-  function closeModal() {
-    modal.classList.remove("active");
-  }
-
-  function closeOnBackdrop(e) {
-    if (e.target === modal) closeModal();
-  }
-</script>
-
+  <script src="script.js"></script>
 </body>
 </html>
