@@ -1,67 +1,48 @@
 <!DOCTYPE html>
-<html lang="ka">
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Zukito</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
-<div class="app">
-
-  <!-- HEADER -->
-  <header class="header">
-    <div class="header-row">
-      <div class="logo">
-        <span class="badge">9</span>
-        Zukito
-      </div>
-    </div>
-
-    <input class="search" type="text" placeholder="Search">
-  </header>
-
-  <!-- CATEGORIES -->
-  <div class="categories">
-    <div class="cat active">All</div>
-    <div class="cat">Shorts</div>
-    <div class="cat">Live</div>
-    <div class="cat">Gaming</div>
-    <div class="cat">Music</div>
-    <div class="cat">News</div>
+<header class="top-bar">
+  <div class="logo">
+    <span class="logo-box">9</span>
+    <span class="logo-text">Zukito</span>
   </div>
 
-  <!-- FEED -->
-  <main class="feed">
+  <button class="search-btn">🔍</button>
+</header>
 
-    <div class="video">
-      <img src="https://picsum.photos/800/450?1">
-      <div class="info">
-        <h4>TOP 10 საინტერესო ფაქტი 😱</h4>
-        <p>1.2M views • 2 days ago</p>
-      </div>
+<nav class="categories">
+  <button class="active">All</button>
+  <button>Shorts</button>
+  <button>Live</button>
+  <button>Gaming</button>
+  <button>Music</button>
+  <button>News</button>
+</nav>
+
+<main class="feed">
+  <div class="video-card">
+    <img src="https://picsum.photos/800/450?1" />
+    <div class="video-info">
+      <h3>TOP 10 საოცარი ფაქტი 😱</h3>
+      <p>1.2M views • 2 days ago</p>
     </div>
+  </div>
 
-    <div class="video">
-      <img src="https://picsum.photos/800/450?2">
-      <div class="info">
-        <h4>Gaming Highlights 🎮</h4>
-        <p>540K views • 1 day ago</p>
-      </div>
+  <div class="video-card">
+    <img src="https://picsum.photos/800/450?2" />
+    <div class="video-info">
+      <h3>Gaming Highlights 🎮</h3>
+      <p>540K views • 1 day ago</p>
     </div>
-
-    <div class="video">
-      <img src="https://picsum.photos/800/450?3">
-      <div class="info">
-        <h4>New Music Mix 🎵</h4>
-        <p>890K views • 3 days ago</p>
-      </div>
-    </div>
-
-  </main>
-
-</div>
+  </div>
+</main>
 
 </body>
 </html>
