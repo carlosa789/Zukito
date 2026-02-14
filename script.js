@@ -1,15 +1,35 @@
-const modal = document.getElementById("modal");
+const filters = document.querySelectorAll(".filter");
+const videos = document.querySelectorAll(".video");
+const searchInput = document.getElementById("searchInput");
 
-function openModal() {
-  modal.classList.add("active");
+function filterVideos() {
+  const activeFilter = document.querySelector(".filter.active").dataset.filter;
+  const searchText = searchInput.value.toLowerCase();
+
+  videos.forEach(video => {
+    const category = video.dataset.category;
+    const title = video.dataset.title.toLowerCase();
+
+    const matchesFilter =
+      activeFilter === "all" || category === activeFilter;
+
+    const matchesSearch =
+      title.includes(searchText);
+
+    if (matchesFilter && matchesSearch) {
+      video.style.display = "block";
+    } else {
+      video.style.display = "none";
+    }
+  });
 }
 
-function closeModal() {
-  modal.classList.remove("active");
-}
+filters.forEach(button => {
+  button.addEventListener("click", () => {
+    filters.forEach(btn => btn.classList.remove("active"));
+    button.classList.add("active");
+    filterVideos();
+  });
+});
 
-function closeOnBackdrop(e) {
-  if (e.target === modal) {
-    closeModal();
-  }
-}
+searchInput.addEventListener("input", filterVideos);
