@@ -10,7 +10,7 @@ body {
   color: #fff;
 }
 
-/* APP */
+/* APP WIDTH (YouTube mobile size) */
 .app {
   max-width: 430px;
   margin: 0 auto;
@@ -18,20 +18,16 @@ body {
 
 /* TOP BAR */
 .topbar {
-  position: fixed;
-  top: 0;
-  width: 100%;
-  max-width: 430px;
-  background: #0f0f0f;
-  z-index: 1000;
-
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
   padding: 10px 12px;
+  position: sticky;
+  top: 0;
+  background: #0f0f0f;
+  z-index: 100;
 }
 
-/* LOGO */
 .logo {
   display: flex;
   align-items: center;
@@ -42,8 +38,8 @@ body {
 .badge {
   background: red;
   color: #fff;
+  padding: 3px 6px;
   border-radius: 6px;
-  padding: 2px 6px;
   font-size: 13px;
 }
 
@@ -59,7 +55,7 @@ body {
   border-radius: 20px;
   border: none;
   background: #1f1f1f;
-  padding: 0 40px 0 14px;
+  padding: 0 38px 0 14px;
   color: #fff;
   font-size: 14px;
   outline: none;
@@ -69,23 +65,22 @@ body {
   color: #aaa;
 }
 
-.search-icon {
+.search-box .icon {
   position: absolute;
   right: 12px;
   top: 50%;
   transform: translateY(-50%);
-  font-size: 16px;
   color: #aaa;
   pointer-events: none;
 }
 
 /* CATEGORIES */
 .categories {
-  margin-top: 56px;
   display: flex;
-  gap: 8px;
-  padding: 10px 12px;
+  gap: 10px;
+  padding: 8px 12px;
   overflow-x: auto;
+  white-space: nowrap;
 }
 
 .categories::-webkit-scrollbar {
@@ -97,7 +92,8 @@ body {
   background: #272727;
   border-radius: 16px;
   font-size: 14px;
-  white-space: nowrap;
+  color: #fff;
+  flex-shrink: 0;
 }
 
 .cat.active {
